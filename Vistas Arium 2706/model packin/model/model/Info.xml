@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+                            <HANAModelPackageForB1 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" defaultLanguage="English">
+	                            <Name>vistasArium</Name>
+	                            <Author>Cris</Author>
+	                            <ModelVersion>1</ModelVersion>
+	                            <HANAVersions>
+		                            <Version></Version>
+	                            </HANAVersions>
+	                            <B1Versions>
+		                            <Version></Version>
+	                            </B1Versions>
+	                            <B1AVersions>
+		                            <Version></Version>
+	                            </B1AVersions>
+	                            <Description></Description>
+	                            <Metadata>
+		                            <CreatedAt>26/06/2017 12:23:43</CreatedAt>
+		                            <ChangedAt>26/06/2017 12:23:43</ChangedAt>
+		                            <ChangedBy></ChangedBy>
+	                            </Metadata>
+	                            <ModelList>
+		                            <!--Please model dependency is managed in sequence!!!-->
+                                           <Model name="BATCH1" type="CalculationView" menu="" IAEnable="N"/>
+       <Model name="BATCH2" type="CalculationView" menu="" IAEnable="N"/>
+       <Model name="INV1" type="CalculationView" menu="" IAEnable="N"/>
+       <Model name="OADM" type="CalculationView" menu="" IAEnable="N"/>
+       <Model name="OCRD" type="CalculationView" menu="" IAEnable="N"/>
+       <Model name="OINV" type="CalculationView" menu="" IAEnable="N"/>
+       <Model name="ORINOINV" type="CalculationView" menu="" IAEnable="N"/>
+       <Model name="RIN1" type="CalculationView" menu="" IAEnable="N"/>
+
+	                            </ModelList>
+                            </HANAModelPackageForB1>

@@ -1,0 +1,18 @@
+create procedure SP_FACE_IT_DATOS_ENCABEZADO2 
+(in Docentry int,
+Tipo char(3)
+)
+
+AS
+BEGIN	--SET ARITHABORT ON
+		 
+		 		IF (:Tipo='FAC' or :Tipo='ND') THEN
+		Select 	(SELECT ESTADO_DOC((:Docentry)) FROM DUMMY) AS  "ESTADO_DOCUMENTO" FROM DUMMY;
+		END IF;
+		 
+	IF (:Tipo='NC') THEN
+				SELECT 'ACTIVO' AS "ESTADO_DOCUMENTO" FROM DUMMY;
+			
+			END IF;
+
+END;

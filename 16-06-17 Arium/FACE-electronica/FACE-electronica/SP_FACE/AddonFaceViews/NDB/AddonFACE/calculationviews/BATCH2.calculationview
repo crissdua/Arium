@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="BATCH2" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="reportingEnabled" calculationScenarioType="TREE_BASED" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation">
+  <origin/>
+  <descriptions defaultDescription="BATCH2"/>
+  <metadata activatedAt="2017-05-15 16:52:55.0" changedAt="2017-05-15 16:52:34.716"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="48"/>
+  <dataSources>
+    <DataSource id="ORIN" type="DATA_BASE_TABLE">
+      <viewAttributes allViewAttributes="true"/>
+      <columnObject schemaName="SBODEMOGT" columnObjectName="ORIN"/>
+    </DataSource>
+    <DataSource id="NNM1" type="DATA_BASE_TABLE">
+      <viewAttributes allViewAttributes="true"/>
+      <columnObject schemaName="SBODEMOGT" columnObjectName="NNM1"/>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="DocEntry"/>
+        <viewAttribute id="DocNum"/>
+        <viewAttribute id="DocDate"/>
+        <viewAttribute id="CardName"/>
+        <viewAttribute id="DocTotal"/>
+        <viewAttribute id="Series"/>
+        <viewAttribute id="U_ESTADO_FACE"/>
+        <viewAttribute id="DocSubType"/>
+        <viewAttribute id="U_DocstatusCC"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="TipoDocumento" length="25" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;DocSubType&quot; = '--','Factura','Nota Debito')</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="FechaDocumento" length="25" expressionLanguage="COLUMN_ENGINE">
+          <formula>format(&quot;DocDate&quot;,'YYYY-MM-dd')</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="TotalCalculado" length="25" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;DocTotal&quot;</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="DocStatus" length="25" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;U_DocstatusCC&quot; = 'A','Anulado','Vigente')</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#ORIN">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DocEntry" source="DocEntry"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DocNum" source="DocNum"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DocDate" source="DocDate"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CardName" source="CardName"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DocTotal" source="DocTotal"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Series" source="Series"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="U_ESTADO_FACE" source="U_ESTADO_FACE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DocSubType" source="DocSubType"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="U_DocstatusCC" source="U_DocstatusCC"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="Series"/>
+        <viewAttribute id="SeriesName"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#NNM1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Series" source="Series"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SeriesName" source="SeriesName"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="inner">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="DocEntry"/>
+        <viewAttribute id="DocNum"/>
+        <viewAttribute id="CardName"/>
+        <viewAttribute id="DocTotal"/>
+        <viewAttribute id="Series"/>
+        <viewAttribute id="TipoDocumento"/>
+        <viewAttribute id="FechaDocumento"/>
+        <viewAttribute id="TotalCalculado"/>
+        <viewAttribute id="U_ESTADO_FACE"/>
+        <viewAttribute id="SeriesName"/>
+        <viewAttribute id="DocStatus"/>
+        <viewAttribute id="DocDate"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Aggregation_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DocEntry" source="DocEntry"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DocNum" source="DocNum"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CardName" source="CardName"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DocTotal" source="DocTotal"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Series" source="Series"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TipoDocumento" source="TipoDocumento"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FechaDocumento" source="FechaDocumento"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TotalCalculado" source="TotalCalculado"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="U_ESTADO_FACE" source="U_ESTADO_FACE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DocStatus" source="DocStatus"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DocDate" source="DocDate"/>
+      </input>
+      <input node="#Aggregation_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SeriesName" source="SeriesName"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Series" source="Series"/>
+      </input>
+      <joinAttribute name="Series"/>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Join_1">
+    <descriptions defaultDescription="BATCH2"/>
+    <attributes>
+      <attribute id="DocNum" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DocNum"/>
+        <keyMapping columnObjectName="Join_1" columnName="DocNum"/>
+      </attribute>
+      <attribute id="DocEntry" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DocEntry"/>
+        <keyMapping columnObjectName="Join_1" columnName="DocEntry"/>
+      </attribute>
+      <attribute id="CardName" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CardName"/>
+        <keyMapping columnObjectName="Join_1" columnName="CardName"/>
+      </attribute>
+      <attribute id="DocTotal" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DocTotal"/>
+        <keyMapping columnObjectName="Join_1" columnName="DocTotal"/>
+      </attribute>
+      <attribute id="TipoDocumento" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TipoDocumento"/>
+        <keyMapping columnObjectName="Join_1" columnName="TipoDocumento"/>
+      </attribute>
+      <attribute id="Series" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Series"/>
+        <keyMapping columnObjectName="Join_1" columnName="Series"/>
+      </attribute>
+      <attribute id="FechaDocumento" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FechaDocumento"/>
+        <keyMapping columnObjectName="Join_1" columnName="FechaDocumento"/>
+      </attribute>
+      <attribute id="U_ESTADO_FACE" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="U_ESTADO_FACE"/>
+        <keyMapping columnObjectName="Join_1" columnName="U_ESTADO_FACE"/>
+      </attribute>
+      <attribute id="SeriesName" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SeriesName"/>
+        <keyMapping columnObjectName="Join_1" columnName="SeriesName"/>
+      </attribute>
+      <attribute id="DocStatus" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DocStatus"/>
+        <keyMapping columnObjectName="Join_1" columnName="DocStatus"/>
+      </attribute>
+      <attribute id="DocDate" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DocDate"/>
+        <keyMapping columnObjectName="Join_1" columnName="DocDate"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="TotalCalculado" order="8" aggregationType="max" measureType="simple">
+        <descriptions defaultDescription="TotalCalculado"/>
+        <measureMapping columnObjectName="Join_1" columnName="TotalCalculado"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="150" y="82"/>
+        <rectangleSize/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="150" y="170"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Aggregation_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="50" y="270"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Aggregation_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="250" y="270"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

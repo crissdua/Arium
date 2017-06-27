@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="RIN1" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="reportingEnabled" calculationScenarioType="TREE_BASED" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation">
+  <origin/>
+  <descriptions defaultDescription="RIN1"/>
+  <metadata activatedAt="2017-06-15 17:20:57.0" changedAt="2017-06-15 17:20:28.481"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <dataSources>
+    <DataSource id="RIN1" type="DATA_BASE_TABLE">
+      <viewAttributes allViewAttributes="true"/>
+      <columnObject schemaName="DEMONUEVA" columnObjectName="RIN1"/>
+    </DataSource>
+  </dataSources>
+  <calculationViews/>
+  <logicalModel id="RIN1">
+    <descriptions defaultDescription="RIN1"/>
+    <attributes>
+      <attribute id="Quantity" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Quantity"/>
+        <keyMapping schemaName="DEMONUEVA" columnObjectName="RIN1" columnName="Quantity"/>
+      </attribute>
+      <attribute id="ItemCode" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ItemCode"/>
+        <keyMapping schemaName="DEMONUEVA" columnObjectName="RIN1" columnName="ItemCode"/>
+      </attribute>
+      <attribute id="Dscription" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Dscription"/>
+        <keyMapping schemaName="DEMONUEVA" columnObjectName="RIN1" columnName="Dscription"/>
+      </attribute>
+      <attribute id="GTotal" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GTotal"/>
+        <keyMapping schemaName="DEMONUEVA" columnObjectName="RIN1" columnName="GTotal"/>
+      </attribute>
+      <attribute id="Price" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Price"/>
+        <keyMapping schemaName="DEMONUEVA" columnObjectName="RIN1" columnName="Price"/>
+      </attribute>
+      <attribute id="TaxCode" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TaxCode"/>
+        <keyMapping schemaName="DEMONUEVA" columnObjectName="RIN1" columnName="TaxCode"/>
+      </attribute>
+      <attribute id="VatSum" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VatSum"/>
+        <keyMapping schemaName="DEMONUEVA" columnObjectName="RIN1" columnName="VatSum"/>
+      </attribute>
+      <attribute id="DocEntry" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DocEntry"/>
+        <keyMapping schemaName="DEMONUEVA" columnObjectName="RIN1" columnName="DocEntry"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures>
+      <measure id="calc" hidden="false" order="8" semanticType="empty" aggregationType="count" measureType="simple" datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="100">
+        <descriptions defaultDescription="calc"/>
+        <formula>&quot;Quantity&quot;</formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

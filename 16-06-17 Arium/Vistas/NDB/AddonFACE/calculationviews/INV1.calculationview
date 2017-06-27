@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="INV1" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="reportingEnabled" calculationScenarioType="TREE_BASED" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation">
+  <origin/>
+  <descriptions defaultDescription="INV1"/>
+  <metadata activatedAt="2017-06-15 17:24:03.0" changedAt="2017-06-15 17:23:35.18"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <dataSources>
+    <DataSource id="INV1" type="DATA_BASE_TABLE">
+      <viewAttributes allViewAttributes="true"/>
+      <columnObject schemaName="DEMONUEVA" columnObjectName="INV1"/>
+    </DataSource>
+  </dataSources>
+  <calculationViews/>
+  <logicalModel id="INV1">
+    <descriptions defaultDescription="INV1"/>
+    <attributes>
+      <attribute id="DocEntry" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DocEntry"/>
+        <keyMapping schemaName="DEMONUEVA" columnObjectName="INV1" columnName="DocEntry"/>
+      </attribute>
+      <attribute id="Quantity" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Quantity"/>
+        <keyMapping schemaName="DEMONUEVA" columnObjectName="INV1" columnName="Quantity"/>
+      </attribute>
+      <attribute id="ItemCode" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ItemCode"/>
+        <keyMapping schemaName="DEMONUEVA" columnObjectName="INV1" columnName="ItemCode"/>
+      </attribute>
+      <attribute id="Dscription" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Dscription"/>
+        <keyMapping schemaName="DEMONUEVA" columnObjectName="INV1" columnName="Dscription"/>
+      </attribute>
+      <attribute id="GTotal" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GTotal"/>
+        <keyMapping schemaName="DEMONUEVA" columnObjectName="INV1" columnName="GTotal"/>
+      </attribute>
+      <attribute id="Price" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Price"/>
+        <keyMapping schemaName="DEMONUEVA" columnObjectName="INV1" columnName="Price"/>
+      </attribute>
+      <attribute id="TaxCode" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TaxCode"/>
+        <keyMapping schemaName="DEMONUEVA" columnObjectName="INV1" columnName="TaxCode"/>
+      </attribute>
+      <attribute id="VatSum" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VatSum"/>
+        <keyMapping schemaName="DEMONUEVA" columnObjectName="INV1" columnName="VatSum"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures>
+      <measure id="calc" hidden="false" order="9" aggregationType="count" measureType="simple" datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="10">
+        <descriptions defaultDescription="calc"/>
+        <formula>&quot;Quantity&quot;</formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>
