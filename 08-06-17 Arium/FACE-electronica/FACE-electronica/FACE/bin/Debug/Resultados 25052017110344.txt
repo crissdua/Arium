@@ -1,0 +1,2 @@
+
+No se puede convertir el objeto COM del tipo 'SAPbouiCOM.ApplicationClass' al tipo de interfaz 'SAPbouiCOM.IApplication'. Ocurrió un error de operación debido a que la llamada QueryInterface en el componente COM para la interfaz con IID '{D1F75D47-137C-4335-AC2A-3FE209831B6A}' generó el siguiente error: Error en la llamada de sistema. (Excepción de HRESULT: 0x80010100 (RPC_E_SYS_CALL_FAILED)).

@@ -1,0 +1,4 @@
+Registros Obtenidos 1
+Tipo de documento a procesar FAC
+Enviando documento 950374
+Ocurrio un errorError en la llamada de sistema. (Excepción de HRESULT: 0x80010100 (RPC_E_SYS_CALL_FAILED))

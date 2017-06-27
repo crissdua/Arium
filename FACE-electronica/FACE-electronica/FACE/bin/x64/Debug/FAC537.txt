@@ -1,0 +1,1 @@
+HUBO ERROR EN LA OPERACION: invalid table name:  Could not find table/view TABLA in schema USERSAP: line 1 col 15 (at pos 14)
