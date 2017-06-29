@@ -1979,8 +1979,8 @@ Module Utils
                 log += ContruyeLog(SBO_Application, "municipioVendedor", obOADM.Rows(0)("COUNTRY").ToString) & vbNewLine
                 dte.departamentoVendedor = obOADM.Rows(0)("State").ToString
                 log += ContruyeLog(SBO_Application, "departamentoVendedor", obOADM.Rows(0)("STATE").ToString) & vbNewLine
-                dte.direccionComercialVendedor = ObtieneValorParametro(OCompany, SBO_Application, "DIRE")
-                log += ContruyeLog(SBO_Application, "direccionComercialVendedor", ObtieneValorParametro(OCompany, SBO_Application, "DIRE")) & vbNewLine
+                dte.direccionComercialVendedor = obRES.Rows(0)("U_DIR_SUCURSAL").ToString
+                log += ContruyeLog(SBO_Application, "direccionComercialVendedor", obRES.Rows(0)("U_DIR_SUCURSAL").ToString) & vbNewLine
                 dte.fechaResolucion = obRES.Rows(0)("U_FECHA_AUTORIZACION").ToString
                 log += ContruyeLog(SBO_Application, "fechaResolucion", obRES.Rows(0)("U_FECHA_AUTORIZACION").ToString) & vbNewLine
                 dte.regimenISR = "ret definitiva"
